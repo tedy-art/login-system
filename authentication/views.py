@@ -34,10 +34,10 @@ def signin(request):
         username = request.POST['username']
         pass1 = request.POST['pass1']
 
-        user = authenticate(usrname=username, password=pass1)
+        user = authenticate(username=username, password=pass1)
         if user is not None:
             login(request, user)
-            fname = user.fisrtnam
+            fname = user.first_name
             return render(request,"authentication/index.html", {'fname':fname})
         else:
             messages.error(request, "Bad Credentials!")
